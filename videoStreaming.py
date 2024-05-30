@@ -2,6 +2,7 @@ from flask import Flask, render_template, Response
 import cv2
 
 app = Flask(__name__, template_folder="templates")
+
 cap = cv2.VideoCapture(0,cv2.CAP_DSHOW)
 face_detector = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
 

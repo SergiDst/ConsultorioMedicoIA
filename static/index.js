@@ -1,7 +1,26 @@
 $(document).ready(function () {
     var artyom = new Artyom();
 
-    $("#btnVoz").on("click", function () {
+    artyom.initialize({
+        lang: "es-ES",
+        debug: true,
+        listen: true,
+        continuous: true,
+        soundex: true,
+        speed: 0.9,
+        mode: "normal",
+    })
+
+    artyom.addCommands({
+        indexes: ["hola"], // Captura cualquier palabra
+        action: function () {
+            artyom.say("hola")
+        }
+    })
+
+    artyom.dontObey()
+
+    /* $("#btnVoz").on("click", function () {
 
         artyom.initialize({
             lang: "es-ES",
@@ -12,7 +31,6 @@ $(document).ready(function () {
             speed: 0.9,
             mode: "normal"
         })
-
 
         // Agregar comando para capturar texto
         artyom.addCommands({
@@ -29,7 +47,7 @@ $(document).ready(function () {
         setTimeout(function () {
             artyom.fatality()
         }, 3000)
-    })
+    }) */
     var promptsAnteriores = [];
 
     $("#buscar").on("click", () => {
